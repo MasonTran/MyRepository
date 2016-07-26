@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<title>Movie List App</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="controllers/movie_controller.js"></script>
+
+</head>
+
+<body ng-app="movieModule">
+
+<div class="row">
+&nbsp;
+</div>
+
+
+
+<div class="container" ng-controller="movieController">
+<div class="row">
+<div class="col-lg-6">
+<form class="form-signin" role="form" ng-submit="search()">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for..." ng-model="searchTitle" style="margin-left:5px;width:99%" required>
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="submit">Search</button><button class="btn btn-default" type="button" ng-click="listAll()">List All</button>
+      </span>
+    </div><!-- /input-group -->
+</form>
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+
+	<h1>Movies List App</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Title ID</th>
+				<th>Title Name</th>
+				<th>Release year</th>
+			</tr>
+		</thead>
+			<tr ng-repeat="each in movies">
+				<td>{{each.TitleId}}</td>
+				<td><a ng-href='/details.html?titleId={{each.TitleId}}&searchTitle={{searchTitle}}'>{{each.TitleName}}</a></td>
+				<td>{{each.ReleaseYear}}</td>
+			</tr>
+
+	</table>
+</div>
+</body>
+</html>
+
